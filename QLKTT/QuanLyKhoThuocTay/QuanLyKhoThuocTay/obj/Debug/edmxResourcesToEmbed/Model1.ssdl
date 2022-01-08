@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="khothuoctayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="loaithuoc">
+    <Key>
+      <PropertyRef Name="maloaithuoc" />
+    </Key>
+    <Property Name="maloaithuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenloaithuoc" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thuoc">
+    <Key>
+      <PropertyRef Name="mathuoc" />
+    </Key>
+    <Property Name="mathuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenthuoc" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="noisanxuat" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ngaysanxuat" Type="date" Nullable="false" />
+    <Property Name="hansudung" Type="date" Nullable="false" />
+    <Property Name="maloaithuoc" Type="int" Nullable="false" />
+    <Property Name="nhacungcap" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+    <Property Name="dongia" Type="int" Nullable="false" />
+    <Property Name="donvitinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'khothuoctay.dbo.view_loaithuoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_loaithuoc">
+    <Key>
+      <PropertyRef Name="maloaithuoc" />
+      <PropertyRef Name="tenloaithuoc" />
+    </Key>
+    <Property Name="sothutu" Type="bigint" />
+    <Property Name="maloaithuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenloaithuoc" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'khothuoctay.dbo.view_thuoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_thuoc">
+    <Key>
+      <PropertyRef Name="mathuoc" />
+      <PropertyRef Name="tenthuoc" />
+      <PropertyRef Name="noisanxuat" />
+      <PropertyRef Name="ngaysanxuat" />
+      <PropertyRef Name="hansudung" />
+      <PropertyRef Name="nhacungcap" />
+      <PropertyRef Name="soluong" />
+      <PropertyRef Name="dongia" />
+      <PropertyRef Name="donvitinh" />
+      <PropertyRef Name="tenloaithuoc" />
+    </Key>
+    <Property Name="sothutu" Type="bigint" />
+    <Property Name="mathuoc" Type="int" Nullable="false" />
+    <Property Name="tenthuoc" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="noisanxuat" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ngaysanxuat" Type="date" Nullable="false" />
+    <Property Name="hansudung" Type="date" Nullable="false" />
+    <Property Name="nhacungcap" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+    <Property Name="dongia" Type="int" Nullable="false" />
+    <Property Name="donvitinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenloaithuoc" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_thuoc_loaithuoc1">
+    <End Role="loaithuoc" Type="Self.loaithuoc" Multiplicity="1" />
+    <End Role="thuoc" Type="Self.thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaithuoc">
+        <PropertyRef Name="maloaithuoc" />
+      </Principal>
+      <Dependent Role="thuoc">
+        <PropertyRef Name="maloaithuoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="khothuoctayModelStoreContainer">
+    <EntitySet Name="loaithuoc" EntityType="Self.loaithuoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="thuoc" EntityType="Self.thuoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_loaithuoc" EntityType="Self.view_loaithuoc" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_loaithuoc].[sothutu] AS [sothutu], 
+    [view_loaithuoc].[maloaithuoc] AS [maloaithuoc], 
+    [view_loaithuoc].[tenloaithuoc] AS [tenloaithuoc]
+    FROM [dbo].[view_loaithuoc] AS [view_loaithuoc]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_thuoc" EntityType="Self.view_thuoc" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_thuoc].[sothutu] AS [sothutu], 
+    [view_thuoc].[mathuoc] AS [mathuoc], 
+    [view_thuoc].[tenthuoc] AS [tenthuoc], 
+    [view_thuoc].[noisanxuat] AS [noisanxuat], 
+    [view_thuoc].[ngaysanxuat] AS [ngaysanxuat], 
+    [view_thuoc].[hansudung] AS [hansudung], 
+    [view_thuoc].[nhacungcap] AS [nhacungcap], 
+    [view_thuoc].[soluong] AS [soluong], 
+    [view_thuoc].[dongia] AS [dongia], 
+    [view_thuoc].[donvitinh] AS [donvitinh], 
+    [view_thuoc].[tenloaithuoc] AS [tenloaithuoc]
+    FROM [dbo].[view_thuoc] AS [view_thuoc]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_thuoc_loaithuoc1" Association="Self.FK_thuoc_loaithuoc1">
+      <End Role="loaithuoc" EntitySet="loaithuoc" />
+      <End Role="thuoc" EntitySet="thuoc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

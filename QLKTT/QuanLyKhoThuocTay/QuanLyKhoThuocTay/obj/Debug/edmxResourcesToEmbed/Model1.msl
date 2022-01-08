@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="khothuoctayModelStoreContainer" CdmEntityContainer="khothuoctayEntities">
+    <EntitySetMapping Name="loaithuocs">
+      <EntityTypeMapping TypeName="khothuoctayModel.loaithuoc">
+        <MappingFragment StoreEntitySet="loaithuoc">
+          <ScalarProperty Name="maloaithuoc" ColumnName="maloaithuoc" />
+          <ScalarProperty Name="tenloaithuoc" ColumnName="tenloaithuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="thuocs">
+      <EntityTypeMapping TypeName="khothuoctayModel.thuoc">
+        <MappingFragment StoreEntitySet="thuoc">
+          <ScalarProperty Name="mathuoc" ColumnName="mathuoc" />
+          <ScalarProperty Name="tenthuoc" ColumnName="tenthuoc" />
+          <ScalarProperty Name="noisanxuat" ColumnName="noisanxuat" />
+          <ScalarProperty Name="ngaysanxuat" ColumnName="ngaysanxuat" />
+          <ScalarProperty Name="hansudung" ColumnName="hansudung" />
+          <ScalarProperty Name="maloaithuoc" ColumnName="maloaithuoc" />
+          <ScalarProperty Name="nhacungcap" ColumnName="nhacungcap" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+          <ScalarProperty Name="donvitinh" ColumnName="donvitinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_loaithuoc">
+      <EntityTypeMapping TypeName="khothuoctayModel.view_loaithuoc">
+        <MappingFragment StoreEntitySet="view_loaithuoc">
+          <ScalarProperty Name="sothutu" ColumnName="sothutu" />
+          <ScalarProperty Name="maloaithuoc" ColumnName="maloaithuoc" />
+          <ScalarProperty Name="tenloaithuoc" ColumnName="tenloaithuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_thuoc">
+      <EntityTypeMapping TypeName="khothuoctayModel.view_thuoc">
+        <MappingFragment StoreEntitySet="view_thuoc">
+          <ScalarProperty Name="sothutu" ColumnName="sothutu" />
+          <ScalarProperty Name="mathuoc" ColumnName="mathuoc" />
+          <ScalarProperty Name="tenthuoc" ColumnName="tenthuoc" />
+          <ScalarProperty Name="noisanxuat" ColumnName="noisanxuat" />
+          <ScalarProperty Name="ngaysanxuat" ColumnName="ngaysanxuat" />
+          <ScalarProperty Name="hansudung" ColumnName="hansudung" />
+          <ScalarProperty Name="nhacungcap" ColumnName="nhacungcap" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+          <ScalarProperty Name="donvitinh" ColumnName="donvitinh" />
+          <ScalarProperty Name="tenloaithuoc" ColumnName="tenloaithuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

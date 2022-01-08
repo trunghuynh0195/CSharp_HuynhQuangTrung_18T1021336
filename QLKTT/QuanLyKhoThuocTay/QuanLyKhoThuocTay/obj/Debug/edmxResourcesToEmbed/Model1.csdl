@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="khothuoctayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="loaithuoc">
+    <Key>
+      <PropertyRef Name="maloaithuoc" />
+    </Key>
+    <Property Name="maloaithuoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenloaithuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="thuocs" Relationship="Self.FK_thuoc_loaithuoc1" FromRole="loaithuoc" ToRole="thuoc" />
+  </EntityType>
+  <EntityType Name="thuoc">
+    <Key>
+      <PropertyRef Name="mathuoc" />
+    </Key>
+    <Property Name="mathuoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenthuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="noisanxuat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngaysanxuat" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hansudung" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="maloaithuoc" Type="Int32" Nullable="false" />
+    <Property Name="nhacungcap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="soluong" Type="Int32" Nullable="false" />
+    <Property Name="dongia" Type="Int32" Nullable="false" />
+    <Property Name="donvitinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="loaithuoc" Relationship="Self.FK_thuoc_loaithuoc1" FromRole="thuoc" ToRole="loaithuoc" />
+  </EntityType>
+  <EntityType Name="view_loaithuoc">
+    <Key>
+      <PropertyRef Name="maloaithuoc" />
+      <PropertyRef Name="tenloaithuoc" />
+    </Key>
+    <Property Name="sothutu" Type="Int64" />
+    <Property Name="maloaithuoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenloaithuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_thuoc">
+    <Key>
+      <PropertyRef Name="mathuoc" />
+      <PropertyRef Name="tenthuoc" />
+      <PropertyRef Name="noisanxuat" />
+      <PropertyRef Name="ngaysanxuat" />
+      <PropertyRef Name="hansudung" />
+      <PropertyRef Name="nhacungcap" />
+      <PropertyRef Name="soluong" />
+      <PropertyRef Name="dongia" />
+      <PropertyRef Name="donvitinh" />
+      <PropertyRef Name="tenloaithuoc" />
+    </Key>
+    <Property Name="sothutu" Type="Int64" />
+    <Property Name="mathuoc" Type="Int32" Nullable="false" />
+    <Property Name="tenthuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="noisanxuat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngaysanxuat" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hansudung" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nhacungcap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="soluong" Type="Int32" Nullable="false" />
+    <Property Name="dongia" Type="Int32" Nullable="false" />
+    <Property Name="donvitinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tenloaithuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_thuoc_loaithuoc1">
+    <End Role="loaithuoc" Type="Self.loaithuoc" Multiplicity="1" />
+    <End Role="thuoc" Type="Self.thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaithuoc">
+        <PropertyRef Name="maloaithuoc" />
+      </Principal>
+      <Dependent Role="thuoc">
+        <PropertyRef Name="maloaithuoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="khothuoctayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="loaithuocs" EntityType="Self.loaithuoc" />
+    <EntitySet Name="thuocs" EntityType="Self.thuoc" />
+    <EntitySet Name="view_loaithuoc" EntityType="Self.view_loaithuoc" />
+    <EntitySet Name="view_thuoc" EntityType="Self.view_thuoc" />
+    <AssociationSet Name="FK_thuoc_loaithuoc1" Association="Self.FK_thuoc_loaithuoc1">
+      <End Role="loaithuoc" EntitySet="loaithuocs" />
+      <End Role="thuoc" EntitySet="thuocs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
